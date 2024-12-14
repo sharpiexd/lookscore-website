@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results - LookScore AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+        
+        .cyber-font { font-family: 'Orbitron', sans-serif; }
+        .cyber-gradient { background: linear-gradient(45deg, #00f2fe, #4facfe); }
+        .cyber-border { border: 2px solid #4facfe; box-shadow: 0 0 15px #4facfe; }
+        .cyber-glow { text-shadow: 0 0 10px #4facfe; }
+        
+        .matrix-bg {
+            background-color: #000;
+            background-image: 
+                linear-gradient(rgba(0, 242, 254, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 254, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .model-image {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .model-image:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="matrix-bg min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-12 animate__animated animate__fadeIn">
+            <h1 class="text-5xl font-bold mb-4 cyber-font cyber-glow">Analysis Results</h1>
+            <p class="text-xl mb-6 text-blue-300">Advanced Facial Analysis Complete</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Your Photo Section -->
+                <div class="bg-black bg-opacity-80 rounded-lg p-6 cyber-border animate__animated animate__fadeInLeft">
+                    <h2 class="text-2xl font-bold mb-4 cyber-font text-center">Your Photo</h2>
+                    <div class="relative">
+                        <img id="userImage" class="w-full h-auto rounded-lg" src="" alt="Your photo">
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="bg-black bg-opacity-80 rounded-lg p-6 cyber-border animate__animated animate__fadeInRight">
+                    <h2 class="text-2xl font-bold mb-4 cyber-font text-center">Your Scores</h2>
+                    <div class="space-y-6">
+                        <div class="cyber-border rounded-lg p-4 text-center">
+                            <span id="ratingScore" class="text-5xl font-bold cyber-font cyber-glow block mb-2"></span>
+                            <p id="ratingMessage" class="text-lg text-blue-300"></p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-black bg-opacity-50 p-3 rounded-lg text-center">
+                                <p class="text-sm text-gray-400">Visual Score</p>
+                                <p id="symmetryScore" class="text-xl font-bold text-blue-400">--</p>
+                            </div>
+                            <div class="bg-black bg-opacity-50 p-3 rounded-lg text-center">
+                                <p class="text-sm text-gray-400">Feature Rating</p>
+                                <p id="featureScore" class="text-xl font-bold text-blue-400">--</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Similar Models Section -->
+            <div class="mt-12 bg-black bg-opacity-80 rounded-lg p-6 cyber-border animate__animated animate__fadeInUp">
+                <h2 class="text-2xl font-bold mb-6 cyber-font text-center">Model Tier Analysis</h2>
+                <div class="flex flex-wrap justify-center gap-6" id="modelComparisons">
+                    <div class="text-center float-animation">
+                        <img src="images/jordan-barrett.jpg" alt="Jordan Barrett" class="model-image cyber-border" style="width: 200px; height: 280px; object-fit: cover; border-radius: 10px; filter: brightness(150%) contrast(110%);">
+                        <p class="text-blue-300 mt-2 cyber-font">Jordan Barrett</p>
+                        <p class="text-sm text-gray-400">9.8/10</p>
+                        <p class="text-xs text-gray-500 mt-1 max-w-[200px]">Elite bone structure, perfect forward growth, hunter eyes, hollow cheeks. Arguably the best facial structure in modeling.</p>
+                    </div>
+                    <div class="text-center float-animation">
+                        <img src="images/francisco-lachowski.jpg" alt="Francisco Lachowski" class="model-image cyber-border" style="width: 200px; height: 280px; object-fit: cover; border-radius: 10px; filter: brightness(150%) contrast(110%);">
+                        <p class="text-blue-300 mt-2 cyber-font">Francisco Lachowski</p>
+                        <p class="text-sm text-gray-400">9.7/10</p>
+                        <p class="text-xs text-gray-500 mt-1 max-w-[200px]">Perfect facial harmony, high cheekbones, strong jaw, ideal eye area. Prime Chico was unmatched.</p>
+                    </div>
+                    <div class="text-center float-animation">
+                        <img src="images/leonardo-dicaprio.jpg" alt="Leonardo DiCaprio" class="model-image cyber-border" style="width: 200px; height: 280px; object-fit: cover; border-radius: 10px; filter: brightness(150%) contrast(110%);">
+                        <p class="text-blue-300 mt-2 cyber-font">Leonardo DiCaprio</p>
+                        <p class="text-sm text-gray-400">8.5/10</p>
+                        <p class="text-xs text-gray-500 mt-1 max-w-[200px]">Prime Leo had good features but lacks the elite bone structure of top models. Good eye area and decent jaw.</p>
+                    </div>
+                    <div class="text-center float-animation">
+                        <img src="images/brad-pitt.jpg" alt="Brad Pitt" class="model-image cyber-border" style="width: 200px; height: 280px; object-fit: cover; border-radius: 10px; filter: brightness(150%) contrast(110%);">
+                        <p class="text-blue-300 mt-2 cyber-font">Brad Pitt</p>
+                        <p class="text-sm text-gray-400">9.5/10</p>
+                        <p class="text-xs text-gray-500 mt-1 max-w-[200px]">Prime Pitt had exceptional facial thirds, strong jaw, and perfect harmony. Top-tier bone structure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="window.location.href='index.html'" class="cyber-gradient text-white py-3 px-6 rounded-lg font-bold cyber-font hover:scale-105 transition-transform">
+                    ANALYZE ANOTHER PHOTO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const rating = parseFloat(urlParams.get('rating'));
+        const symmetry = parseFloat(urlParams.get('symmetry'));
+        const features = parseFloat(urlParams.get('features'));
+        const imageData = urlParams.get('image');
+
+        // Display results
+        document.getElementById('ratingScore').textContent = rating.toFixed(1) + '/10';
+        document.getElementById('symmetryScore').textContent = symmetry.toFixed(1) + '%';
+        document.getElementById('featureScore').textContent = features.toFixed(1) + '%';
+        document.getElementById('userImage').src = imageData;
+
+        function getDetailedRating(rating) {
+            if (rating >= 9.5) return "GODLIKE AESTHETICS! 👑";
+            if (rating >= 9) return "MODEL TIER DETECTED! 🌟";
+            if (rating >= 8.5) return "ELITE FACIAL STRUCTURE! ⭐";
+            if (rating >= 8) return "SUPERIOR GENETICS! ✨";
+            if (rating >= 7.5) return "HIGH-TIER FEATURES! 💫";
+            if (rating >= 7) return "ABOVE AVERAGE DETECTED! 👍";
+            if (rating >= 6.5) return "GOOD FACIAL HARMONY! 😊";
+            return "POSITIVE POTENTIAL! 💪";
+        }
+
+        document.getElementById('ratingMessage').textContent = getDetailedRating(rating);
+
+        // Model comparisons based on rating
+        const models = {
+            high: [
+                { name: 'Jordan Barrett', image: 'https://i.imgur.com/example1.jpg' },
+                { name: 'Francisco Lachowski', image: 'https://i.imgur.com/example2.jpg' }
+            ],
+            medium: [
+                { name: 'Leonardo DiCaprio', image: 'https://i.imgur.com/example3.jpg' },
+                { name: 'Brad Pitt', image: 'https://i.imgur.com/example4.jpg' }
+            ]
+        };
+
+        const modelContainer = document.getElementById('modelComparisons');
+        const selectedModels = rating >= 8.5 ? models.high : models.medium;
+
+        selectedModels.forEach(model => {
+            const div = document.createElement('div');
+            div.className = 'text-center float-animation';
+            div.innerHTML = `
+                <img src="${model.image}" alt="${model.name}" class="model-image cyber-border">
+                <p class="text-blue-300 mt-2 cyber-font">${model.name}</p>
+            `;
+            modelContainer.appendChild(div);
+        });
+    </script>
+</body>
+</html>
